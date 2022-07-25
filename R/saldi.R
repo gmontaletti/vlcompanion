@@ -1,3 +1,20 @@
+#' Saldi
+#'
+#' genera una data table con i saldi fra avviamenti  e cessazioni per ogni giorno in cui si verifica almeno un evento
+#'
+#' @param dati
+#' il data frame che contiene i dati
+#' @param data_inizio
+#' la variabile che contiene la data di inizio dell'evento
+#' @param data_fine
+#' la varibile che contiene la data di fine dell'evento
+#' @param classifica
+#' variabile che contiene la classificazione per la quale si generano i saldi
+#'
+#' @return
+#' @export
+#'
+#' @examples
 saldi <- function(dati = df, data_inizio = inizio, data_fine = fine, classifica = classificatore
           ) {
   t <- merge(dati[, .(cessati = .N), .(data = data_fine + 1, classifica)]
