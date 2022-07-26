@@ -18,18 +18,18 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-Obiettivo di vlcompanion facilitare il calcolo di alcune statistiche in COB
+Obiettivo di vlcompanion facilitare il calcolo di alcune statistiche sulle COB e usare le funzioni per la creazione di dashboard.
 
-## Installation
+## Installazione
 
-You can install the development version of vlcompanion from [GitHub](https://github.com/) with:
+Puoi installare al versione di sviluppo di vlcompanion da [GitHub](https://github.com/) con:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("gmontaletti/vlcompanion")
 ```
 
-## Example
+## Esempi
 
 This is a basic example which shows you how to solve a common problem:
 

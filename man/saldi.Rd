@@ -26,3 +26,12 @@ saldi(
 \description{
 genera una data table con i saldi fra avviamenti  e cessazioni per ogni giorno in cui si verifica almeno un evento
 }
+\details{
+La funzione gestisce anche i valori NA nelle date.
+In questo caso il totale degli eventi viene modificato sottraendo i casi con date NA dal conto di avvimenti e cessazioni.
+Allo stesso modo dalla tavola dei saldi vengono rimosse le righe che sono NA per le varibili di classificazione.
+}
+\examples{
+dsa <- saldi(eventi, "inizio", "fine", "genere")
+
+}

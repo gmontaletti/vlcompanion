@@ -11,23 +11,37 @@
 #' @param classifica
 #' variabile che contiene la classificazione per la quale si generano i saldi
 #'
+#' @details
+#' La funzione gestisce anche i valori NA nelle date.
+#' In questo caso il totale degli eventi viene modificato sottraendo i casi con date NA dal conto di avvimenti e cessazioni.
+#' Allo stesso modo dalla tavola dei saldi vengono rimosse le righe che sono NA per le varibili di classificazione.
+#'
 #' @return
 #' @export
+#' @import data.table
 #'
 #' @examples
+#' dsa <- saldi(eventi, "inizio", "fine", "genere")
+#'
 saldi <- function(dati = df, data_inizio = inizio, data_fine = fine, classifica = classificatore
           ) {
-  data.table::setDT(dati)
-  t <- data.table::merge.data.table(dati[, .(cessati = .N), .(data = data_fine + 1, classifica)]
-             , dati[, .(avviati = .N), .(data = data_inizio, classifica)]
+  setDT(dati)
+  avviati <- cessati  <- saldo <- saldo_cumulato <- as.integer(1L)
+  t2 <- dati[, .(avviati = .N), by = c(data_inizio, classifica)]
+  setnames(t2, data_inizio, "data")
+  t1 <- dati[, .(cessati = .N), by = c(data_fine, classifica)]
+  setnames(t1, data_fine, "data")
+
+  t <- merge.data.table(t1, t2
              , by.x = c("data", classifica)
              , by.y = c("data", classifica)
              , all = T)
   data.table::setkey(t, data)
+  t <- t[!is.na(data)][!is.na(get(classifica))]
   t[is.na(cessati), cessati := 0]
   t[is.na(avviati), avviati := 0]
   t[, saldo := avviati - cessati]
-  t <- t[, saldo_cumulato := cumsum(saldo), nup_nome2]
-  t <- t[data >= data_inizio & data <= as.IDate(data_fine)]
+
+  t <- t[, saldo_cumulato := cumsum(saldo), classifica]
   return(t)
 }
