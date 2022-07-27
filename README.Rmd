@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # vlcompanion
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 Obiettivo di vlcompanion facilitare il calcolo di alcune statistiche sulle COB e usare le funzioni per la creazione di dashboard.
@@ -31,11 +32,14 @@ devtools::install_github("gmontaletti/vlcompanion")
 
 ## Esempi
 
-This is a basic example which shows you how to solve a common problem:
+La prima funzione `cosaldi()` calcola i saldi giornalieri fra avviamenti e cessazioni e il saldo cumulato, usando una variabile come raggruppamento.
+
+Il risultato è una data table.
 
 ```{r example}
 library(vlcompanion)
-## basic example code
+cosaldi(eventi, inizio, fine, area) |> head()
+
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:

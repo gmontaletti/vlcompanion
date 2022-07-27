@@ -21,7 +21,11 @@ devtools::install_github("gmontaletti/vlcompanion")
 
 ## Esempi
 
-This is a basic example which shows you how to solve a common problem:
+La prima funzione `cosaldi()` calcola i saldi giornalieri fra avviamenti
+e cessazioni e il saldo cumulato, usando una variabile come
+raggruppamento.
+
+Il risultato è una data table.
 
 ``` r
 library(vlcompanion)
@@ -30,7 +34,16 @@ library(vlcompanion)
 #> The following object is masked from 'package:graphics':
 #> 
 #>     coplot
-## basic example code
+cosaldi(eventi, inizio, fine, area) |> head()
+#> Key: <data>
+#>          data avviati cessati saldo saldo_cumulato        area
+#>        <Date>   <int>   <int> <int>          <int>      <fctr>
+#> 1: 2020-01-01       2       0     2              2      centro
+#> 2: 2020-01-01       2       0     2              2    nord-est
+#> 3: 2020-01-01       3       0     3              3  nord-ovest
+#> 4: 2020-01-01       1       0     1              1 sud e isole
+#> 5: 2020-01-02       1       0     1              3      centro
+#> 6: 2020-01-02       6       0     6              8    nord-est
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`?
