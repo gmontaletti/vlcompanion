@@ -1,23 +1,26 @@
-#' coplot
+#' cobplot
 #'
 #' Plot dei saldi usando ggplot2
 #'
 #' usa una data.table con i saldi per reppresentare la curca dei saldi cumulati.
+#'
 #' @param saldo
 #' la table che contiene i saldi da rappresentare. Tipicamente generata con la funzione saldi()
 #' @param gruppo
 #' la colonna che contiene la variabile di raggruppamento (ad esempio il genere)
 #'
 #' @return p, un grafico ggplot a linee
+#'
 #' @export
 #'
 #' @examples
-#' saldi(eventi, "inizio", "fine", "genere") |>
-#'          coplot(gruppo = genere)
+#' cosaldi(eventi, inizio, fine, genere) |>
+#'          cobplot(gruppo = genere)
 #'
 #' @import ggplot2
-coplot <- function(saldo = df, gruppo = genere) {
-p <- ggplot2::ggplot(saldo) +
+
+cobplot <- function(saldo = df, gruppo = genere) {
+  p <- ggplot2::ggplot(saldo) +
     ggplot2::aes(x = data
                  , y = saldo_cumulato
                  , group = {{gruppo}}
@@ -30,8 +33,9 @@ p <- ggplot2::ggplot(saldo) +
                                       , min(saldo$data)
                                       , " e il "
                                       , max(saldo[avviati > 0, data])
-                                            )
-                  , caption = "Elaborazioni Veneto Lavoro su dati COB Regione Veneto"
                   )
-return(p)
+                  , caption = "Elaborazioni Veneto Lavoro su dati COB Regione Veneto"
+    )
+  return(p)
+
 }
