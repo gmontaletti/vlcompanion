@@ -4,12 +4,7 @@
 \alias{saldi}
 \title{Saldi}
 \usage{
-saldi(
-  dati = df,
-  data_inizio = inizio,
-  data_fine = fine,
-  classifica = classificatore
-)
+saldi(dati = df, data_inizio = inizio, data_fine = fine, gruppo = genere)
 }
 \arguments{
 \item{dati}{il data frame che contiene i dati}
@@ -18,18 +13,22 @@ saldi(
 
 \item{data_fine}{la varibile che contiene la data di fine dell'evento}
 
-\item{classifica}{variabile che contiene la classificazione per la quale si generano i saldi}
+\item{gruppo}{variabile che contiene i raggruppamementi per i quali si generano i saldi}
 }
 \value{
-
+t, una data.table con avviati, cessati, saldo
+e saldo_cumulato per ogni giorno e per la variabile di raggruppamento
 }
 \description{
-genera una data table con i saldi fra avviamenti  e cessazioni per ogni giorno in cui si verifica almeno un evento
+genera una data table con i saldi fra avviamenti  e cessazioni
+per ogni giorno in cui si verifica almeno un evento
 }
 \details{
 La funzione gestisce anche i valori NA nelle date.
-In questo caso il totale degli eventi viene modificato sottraendo i casi con date NA dal conto di avvimenti e cessazioni.
-Allo stesso modo dalla tavola dei saldi vengono rimosse le righe che sono NA per le varibili di classificazione.
+In questo caso il totale degli eventi viene modificato sottraendo
+i casi con date NA dal conto di avvimenti e cessazioni.
+Allo stesso modo dalla tavola dei saldi vengono rimosse le righe
+che sono NA per le varibili di classificazione.
 }
 \examples{
 dsa <- saldi(eventi, "inizio", "fine", "genere")

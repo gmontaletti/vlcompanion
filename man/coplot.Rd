@@ -4,15 +4,15 @@
 \alias{coplot}
 \title{coplot}
 \usage{
-coplot(saldo = df, classificazione = classif)
+coplot(saldo = df, gruppo = genere)
 }
 \arguments{
 \item{saldo}{la table che contiene i saldi da rappresentare. Tipicamente generata con la funzione saldi()}
 
-\item{classificazione}{la colonna che contiene la variabile di classificazione (ad esempio il genere)}
+\item{gruppo}{la colonna che contiene la variabile di raggruppamento (ad esempio il genere)}
 }
 \value{
-
+p, un grafico ggplot a linee
 }
 \description{
 Plot dei saldi usando ggplot2
@@ -22,6 +22,6 @@ usa una data.table con i saldi per reppresentare la curca dei saldi cumulati.
 }
 \examples{
 saldi(eventi, "inizio", "fine", "genere") |>
-         coplot(classificazione = genere)
+         coplot(gruppo = genere)
 
 }

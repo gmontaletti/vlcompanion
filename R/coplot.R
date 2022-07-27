@@ -5,23 +5,23 @@
 #' usa una data.table con i saldi per reppresentare la curca dei saldi cumulati.
 #' @param saldo
 #' la table che contiene i saldi da rappresentare. Tipicamente generata con la funzione saldi()
-#' @param classificazione
-#' la colonna che contiene la variabile di classificazione (ad esempio il genere)
+#' @param gruppo
+#' la colonna che contiene la variabile di raggruppamento (ad esempio il genere)
 #'
-#' @return
+#' @return p, un grafico ggplot a linee
 #' @export
 #'
 #' @examples
 #' saldi(eventi, "inizio", "fine", "genere") |>
-#'          coplot(classificazione = genere)
+#'          coplot(gruppo = genere)
 #'
 #' @import ggplot2
-coplot <- function(saldo = df, classificazione = classif) {
-ggplot2::ggplot(saldo) +
+coplot <- function(saldo = df, gruppo = genere) {
+p <- ggplot2::ggplot(saldo) +
     ggplot2::aes(x = data
                  , y = saldo_cumulato
-                 , group = {{classificazione}}
-                 , col = {{classificazione}}) +
+                 , group = {{gruppo}}
+                 , col = {{gruppo}}) +
     ggplot2::geom_line() +
     ggplot2::theme_minimal() +
     ggplot2::labs(x = "", y = ""
@@ -33,4 +33,5 @@ ggplot2::ggplot(saldo) +
                                             )
                   , caption = "Elaborazioni Veneto Lavoro su dati COB Regione Veneto"
                   )
+return(p)
 }
