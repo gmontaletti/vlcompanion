@@ -75,4 +75,12 @@ variabile di raggruppamento.
 
 <img src="man/figures/README-pressure-1.png" width="100%" />
 
-In corso di revisione la funzione coplot
+La funzione \`cobplot()\` restitusce la curva dei saldi cumulati per una
+variabile di raggruppamento.
+
+``` r
+cosaldi(eventi, inizio, fine, genere) |>
+         cobplot(gruppo = genere)
+```
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
