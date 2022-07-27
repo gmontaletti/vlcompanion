@@ -21,6 +21,20 @@ devtools::install_github("gmontaletti/vlcompanion")
 
 ## Esempi
 
+## La base dati Eventi - eventi simulati
+
+il package contiene un datasetdi eventi simulati con un inizio, durata
+in giorni, una fine e tre fattori (genere, settore e area geografica).
+
+### Usage
+
+    data(eventi)
+
+Il dataset non è una ricostruzione realistica, dato che tutti contratti
+simulati iniziano in un periodo specifico e risultano tutti conclusi
+entro tre anni. La struttura dele informazioni, generate casualmente,
+riflette quella di un vero archivio di COB.
+
 La prima funzione `cosaldi()` calcola i saldi giornalieri fra avviamenti
 e cessazioni e il saldo cumulato, usando una variabile come
 raggruppamento.
@@ -29,11 +43,6 @@ Il risultato è una data table.
 
 ``` r
 library(vlcompanion)
-#> 
-#> Attaching package: 'vlcompanion'
-#> The following object is masked from 'package:graphics':
-#> 
-#>     coplot
 cosaldi(eventi, inizio, fine, area) |> head()
 #> Key: <data>
 #>          data avviati cessati saldo saldo_cumulato        area
