@@ -2,6 +2,7 @@
 
 export(cobarre)
 export(coplot)
+export(cosaldi)
 export(saldi)
 import(data.table)
 import(ggplot2)
