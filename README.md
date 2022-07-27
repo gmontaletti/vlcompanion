@@ -46,29 +46,24 @@ cosaldi(eventi, inizio, fine, area) |> head()
 #> 6: 2020-01-02       6       0     6              8    nord-est
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Dato un file di eventi con la struttura che segue:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+head(eventi)
+#>      cod     inizio genere settore        area durata_giorni       fine
+#>    <int>     <Date> <fctr>  <fctr>      <fctr>         <int>     <Date>
+#> 1:     1 2020-03-14      F servizi  nord-ovest           462 2021-06-19
+#> 2:     2 2020-12-05      F servizi sud e isole            92 2021-03-07
+#> 3:     3 2020-01-11      F servizi      centro           111 2020-05-01
+#> 4:     4 2020-10-17      F servizi  nord-ovest           333 2021-09-15
+#> 5:     5 2020-07-16      M servizi sud e isole          1037 2023-05-19
+#> 6:     6 2020-03-01      M servizi sud e isole           392 2021-03-28
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
+è possibile generare un grafico a barre direttamente con la funzione
+\`cobarre()\`, passando come parametri il nome del data frame e una
+variabile di raggruppamento.
 
 <img src="man/figures/README-pressure-1.png" width="100%" />
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+In corso di revisione la funzione coplot

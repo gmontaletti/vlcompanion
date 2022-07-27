@@ -42,18 +42,16 @@ cosaldi(eventi, inizio, fine, area) |> head()
 
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+Dato un file di eventi con la struttura che segue:
 
 ```{r cars}
-summary(cars)
+head(eventi)
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
+è possibile generare un grafico a barre direttamente con la funzione \`cobarre()\`, passando come parametri il nome del data frame e una variabile di raggruppamento.
 
 ```{r pressure, echo = FALSE}
-plot(pressure)
+cobarre(eventi, area) 
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+In corso di revisione la funzione coplot
