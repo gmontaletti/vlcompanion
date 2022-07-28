@@ -1,5 +1,5 @@
-test_that("la somma degli eventi = 5000", {
-  expect_equal(nrow(eventi), 5000L)
+test_that("la somma degli eventi sia uguale al conto in saldi", {
+  expect_equal(nrow(eventi), sum(cosaldi(eventi, inizio, fine, genere)$avviati))
 })
 test_that("la somma degli avviati torna", {
   expect_equal(nrow(eventi), sum(cosaldi(eventi, inizio, fine, genere)$avviati, na.rm = TRUE))

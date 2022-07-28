@@ -34,7 +34,7 @@ cobplot <- function(saldo = df, gruppo = genere) {
                                       , " e il "
                                       , max(saldo[avviati > 0, data])
                   )
-                  , caption = "Elaborazioni Veneto Lavoro su dati COB Regione Veneto"
+                  , caption = "Elaborazioni del mantainer su dati COB simulati"
     )
   return(p)
 

@@ -30,7 +30,7 @@ p <- ggplot(dff) +
        #                     , " e il "
        #                     , max(df$data_inizio)
        # )
-       , caption = "Elaborazioni Veneto Lavoro su dati COB Regione Veneto"
+       , caption = "Elaborazioni del mantainer su dati COB simulati"
   ) +
   theme_minimal() +
   coord_flip()

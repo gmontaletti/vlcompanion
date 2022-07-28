@@ -32,9 +32,9 @@ devtools::install_github("gmontaletti/vlcompanion")
 
 ## Esempi
 
-## La base dati Eventi - eventi simulati
+## La base dati eventi simulati
 
-il package contiene un datasetdi eventi simulati con un inizio, durata in giorni, una fine e tre fattori (genere, settore e area geografica).
+il package contiene un dataset di eventi simulati con un inizio, durata in giorni, una fine e tre fattori (genere, settore e area geografica).
 
 ### Usage
 
