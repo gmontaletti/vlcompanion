@@ -19,21 +19,39 @@ Puoi installare al versione di sviluppo di vlcompanion da
 devtools::install_github("gmontaletti/vlcompanion")
 ```
 
+### Uso
+
+``` r
+library(vlcompanion)
+```
+
 ## Esempi
 
-## La base dati eventi simulati
+### La base dati eventi simulati
 
 il package contiene un dataset di eventi simulati con un inizio, durata
 in giorni, una fine e tre fattori (genere, settore e area geografica).
-
-### Usage
-
-    data(eventi)
 
 Il dataset non è una ricostruzione realistica, dato che tutti contratti
 simulati iniziano in un periodo specifico e risultano tutti conclusi
 entro tre anni. La struttura dele informazioni, generate casualmente,
 riflette quella di un vero archivio di COB.
+
+Il file di eventi presenta la struttura che segue:
+
+``` r
+data(eventi)
+head(eventi)
+#>   cod     inizio genere   settore       area durata_giorni       fine
+#> 1   1 2020-08-16      M   servizi   nord-est            12 2020-08-28
+#> 2   2 2021-09-04      M   servizi     centro             4 2021-09-08
+#> 3   3 2021-05-11      M industria nord-ovest            27 2021-06-07
+#> 4   4 2021-06-05      M   servizi nord-ovest            33 2021-07-08
+#> 5   5 2021-05-02      F   servizi nord-ovest            39 2021-06-10
+#> 6   6 2020-11-20      F   servizi   nord-est             8 2020-11-28
+```
+
+### La funzione \`cosaldi()\`
 
 La prima funzione `cosaldi()` calcola i saldi giornalieri fra avviamenti
 e cessazioni e il saldo cumulato, usando una variabile come
@@ -55,28 +73,18 @@ cosaldi(eventi, inizio, fine, area) |> head()
 #> 6: 2020-01-02       1       0     1              2 sud e isole
 ```
 
-Dato un file di eventi con la struttura che segue:
+### La funzione \`cobarre()\`
 
-``` r
-head(eventi)
-#>      cod     inizio genere   settore       area durata_giorni       fine
-#>    <int>     <Date> <fctr>    <fctr>     <fctr>         <num>     <Date>
-#> 1:     1 2020-08-16      M   servizi   nord-est            12 2020-08-28
-#> 2:     2 2021-09-04      M   servizi     centro             4 2021-09-08
-#> 3:     3 2021-05-11      M industria nord-ovest            27 2021-06-07
-#> 4:     4 2021-06-05      M   servizi nord-ovest            33 2021-07-08
-#> 5:     5 2021-05-02      F   servizi nord-ovest            39 2021-06-10
-#> 6:     6 2020-11-20      F   servizi   nord-est             8 2020-11-28
-```
-
-è possibile generare un grafico a barre direttamente con la funzione
+E’ possibile generare un grafico a barre direttamente con la funzione
 \`cobarre()\`, passando come parametri il nome del data frame e una
 variabile di raggruppamento.
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+<img src="man/figures/README-cobarre-1.png" width="100%" />
 
-La funzione \`cobplot()\` restitusce la curva dei saldi cumulati per una
-variabile di raggruppamento.
+### La funzione \`cobplot()\`
+
+La funzione \`cobplot()\` restituisce la curva dei saldi cumulati per
+una variabile di raggruppamento.
 
 ``` r
 cosaldi(eventi, inizio, fine, genere) |>

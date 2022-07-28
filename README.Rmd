@@ -30,41 +30,50 @@ Puoi installare al versione di sviluppo di vlcompanion da [GitHub](https://githu
 devtools::install_github("gmontaletti/vlcompanion")
 ```
 
+### Uso
+
+```{r lib}
+library(vlcompanion)
+```
+
 ## Esempi
 
-## La base dati eventi simulati
+### La base dati eventi simulati
 
 il package contiene un dataset di eventi simulati con un inizio, durata in giorni, una fine e tre fattori (genere, settore e area geografica).
 
-### Usage
-
-    data(eventi)
-
 Il dataset non è una ricostruzione realistica, dato che tutti contratti simulati iniziano in un periodo specifico e risultano tutti conclusi entro tre anni. La struttura dele informazioni, generate casualmente, riflette quella di un vero archivio di COB.
+
+Il file di eventi presenta la struttura che segue:
+
+```{r head_eventi}
+data(eventi)
+head(eventi)
+```
+
+### La funzione \`cosaldi()\`
 
 La prima funzione `cosaldi()` calcola i saldi giornalieri fra avviamenti e cessazioni e il saldo cumulato, usando una variabile come raggruppamento.
 
 Il risultato è una data table.
 
-```{r example}
+```{r esempio_cosaldi}
 library(vlcompanion)
 cosaldi(eventi, inizio, fine, area) |> head()
 
 ```
 
-Dato un file di eventi con la struttura che segue:
+### La funzione \`cobarre()\`
 
-```{r cars}
-head(eventi)
-```
+E' possibile generare un grafico a barre direttamente con la funzione \`cobarre()\`, passando come parametri il nome del data frame e una variabile di raggruppamento.
 
-è possibile generare un grafico a barre direttamente con la funzione \`cobarre()\`, passando come parametri il nome del data frame e una variabile di raggruppamento.
-
-```{r pressure, echo = FALSE}
+```{r cobarre, echo = FALSE}
 cobarre(eventi, area) 
 ```
 
-La funzione \`cobplot()\` restitusce la curva dei saldi cumulati per una variabile di raggruppamento.
+### La funzione \`cobplot()\`
+
+La funzione \`cobplot()\` restituisce la curva dei saldi cumulati per una variabile di raggruppamento.
 
 ```{r}
 cosaldi(eventi, inizio, fine, genere) |>
